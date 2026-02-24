@@ -1,0 +1,9 @@
+flask
+flask-cors
+ultralytics==8.3.24
+opencv-python>=4.10.0
+matplotlib>=3.10.0
+paddleocr==2.10.0
+paddlepaddle==2.6.2
+numpy==1.26.4
+werkzeug
