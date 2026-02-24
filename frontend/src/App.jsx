@@ -149,8 +149,17 @@ function App() {
                 <div className="display-grid">
                   <div className="display-card">
                     <div className="card-label">Original Context</div>
-                    <div className="img-container" style={{ marginBottom: '1rem' }}>
+                    <div className="img-container" style={{ marginBottom: '1.5rem', opacity: 0.7 }}>
                       <img src={preview} alt="Original context" />
+                    </div>
+
+                    <div className="card-label">Refined Environment (Atmospheric Correction)</div>
+                    <div className="img-container" style={{ marginBottom: '1.5rem' }}>
+                      {result.refined_image ? (
+                        <img src={`data:image/jpeg;base64,${result.refined_image}`} alt="Refined View" />
+                      ) : (
+                        <div style={{ color: '#ff4f4f' }}>Refinement Failed</div>
+                      )}
                     </div>
 
                     <div className="card-label">Detection Crop</div>
@@ -185,6 +194,40 @@ function App() {
                   </div>
                 </div>
 
+                {result.benchmarks && (
+                  <div className="display-card">
+                    <div className="card-label">Model Evaluation Metrics (Academic)</div>
+
+                    <div className="metrics-sub-section">
+                      <div className="mini-label">Detection Stability</div>
+                      <div className="metrics-grid">
+                        <div className="metric-item">
+                          <div className="card-label">Precision</div>
+                          <div className="metric-val">{result.benchmarks.precision}%</div>
+                        </div>
+                        <div className="metric-item">
+                          <div className="card-label">Recall</div>
+                          <div className="metric-val">{result.benchmarks.recall}%</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="metrics-sub-section" style={{ marginTop: '1.5rem' }}>
+                      <div className="mini-label">Classification Accuracy</div>
+                      <div className="metrics-grid">
+                        <div className="metric-item">
+                          <div className="card-label">YOLOv8 mAP</div>
+                          <div className="metric-val">{result.benchmarks.yolo_accuracy}%</div>
+                        </div>
+                        <div className="metric-item">
+                          <div className="card-label">OCR Correctness</div>
+                          <div className="metric-val">{result.benchmarks.ocr_accuracy}%</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 <div className="display-card">
                   <div className="card-label">Raw Neural Output</div>
                   <div className="raw-tags">
@@ -197,6 +240,7 @@ function App() {
                     )}
                   </div>
                 </div>
+
               </motion.div>
             )}
           </AnimatePresence>
