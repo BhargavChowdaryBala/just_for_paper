@@ -148,6 +148,11 @@ function App() {
 
                 <div className="display-grid">
                   <div className="display-card">
+                    <div className="card-label">Original Context</div>
+                    <div className="img-container" style={{ marginBottom: '1rem' }}>
+                      <img src={preview} alt="Original context" />
+                    </div>
+
                     <div className="card-label">Detection Crop</div>
                     <div className="img-container">
                       {result.plate_image ? (
