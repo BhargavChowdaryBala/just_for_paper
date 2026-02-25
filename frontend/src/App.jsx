@@ -194,39 +194,36 @@ function App() {
                   </div>
                 </div>
 
-                {result.benchmarks && (
-                  <div className="display-card">
-                    <div className="card-label">Model Evaluation Metrics (Academic)</div>
+                <div className="metric-item">
+                  <div className="card-label">Precision</div>
+                  <div className="metric-val">{(result.benchmarks.precision * 100).toFixed(2)}%</div>
+                </div>
+                <div className="metric-item">
+                  <div className="card-label">Recall</div>
+                  <div className="metric-val">{(result.benchmarks.recall * 100).toFixed(2)}%</div>
+                </div>
+                <div className="metric-item">
+                  <div className="card-label">F1-Score</div>
+                  <div className="metric-val" style={{ color: 'var(--neon-blue)' }}>{(result.benchmarks.f1_score * 100).toFixed(2)}%</div>
+                </div>
 
-                    <div className="metrics-sub-section">
-                      <div className="mini-label">Detection Stability</div>
-                      <div className="metrics-grid">
-                        <div className="metric-item">
-                          <div className="card-label">Precision</div>
-                          <div className="metric-val">{result.benchmarks.precision}%</div>
-                        </div>
-                        <div className="metric-item">
-                          <div className="card-label">Recall</div>
-                          <div className="metric-val">{result.benchmarks.recall}%</div>
-                        </div>
-                      </div>
+                <div className="metrics-sub-section" style={{ marginTop: '1.5rem' }}>
+                  <div className="mini-label">Classification Accuracy</div>
+                  <div className="metrics-grid">
+                    <div className="metric-item">
+                      <div className="card-label">YOLOv8 mAP</div>
+                      <div className="metric-val">{(result.benchmarks.yolo_accuracy * 100).toFixed(2)}%</div>
                     </div>
-
-                    <div className="metrics-sub-section" style={{ marginTop: '1.5rem' }}>
-                      <div className="mini-label">Classification Accuracy</div>
-                      <div className="metrics-grid">
-                        <div className="metric-item">
-                          <div className="card-label">YOLOv8 mAP</div>
-                          <div className="metric-val">{result.benchmarks.yolo_accuracy}%</div>
-                        </div>
-                        <div className="metric-item">
-                          <div className="card-label">OCR Correctness</div>
-                          <div className="metric-val">{result.benchmarks.ocr_accuracy}%</div>
-                        </div>
-                      </div>
+                    <div className="metric-item">
+                      <div className="card-label">OCR Correctness</div>
+                      <div className="metric-val">{(result.benchmarks.ocr_accuracy * 100).toFixed(2)}%</div>
+                    </div>
+                    <div className="metric-item">
+                      <div className="card-label">System Accuracy</div>
+                      <div className="metric-val" style={{ color: 'var(--neon-green)' }}>{(result.benchmarks.overall_accuracy * 100).toFixed(2)}%</div>
                     </div>
                   </div>
-                )}
+                </div>
 
                 <div className="display-card">
                   <div className="card-label">Raw Neural Output</div>
